@@ -35,8 +35,7 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-# add local files
-COPY root/ / 
+# add local files 
 
 # ports and volumes
 EXPOSE 8096 8920
