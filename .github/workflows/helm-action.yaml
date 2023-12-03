@@ -35,9 +35,10 @@ jobs:
 
       - name: Publish Helm charts
         run: |
+          mkdir ./helm-release
           cd ./helm-source
           helm package jellyfin 
-          mv jellyfin-* ../helm-release/
+          mv jellyfin-* ../helm-release
           cd ../
           helm repo index --url https://github.com/jankalep/it-academy-project/ --merge index.yaml .
       
