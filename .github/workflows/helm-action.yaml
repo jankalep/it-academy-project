@@ -40,7 +40,7 @@ jobs:
           helm package jellyfin 
           mv jellyfin-* ../helm-release
           cd ../
-          helm repo index --url https://github.com/jankalep/it-academy-project/ --merge index.yaml .
+          helm repo index 
       
       - name: Commit and push changes
         run: |
