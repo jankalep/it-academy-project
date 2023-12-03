@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./public/budarkevichigor/
           push: true
-          tags: jellyfin:uldz
+          tags: jfrog.it-academy.by/jellyfin:uldz
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
