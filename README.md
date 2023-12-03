@@ -1,22 +1,26 @@
-## Project report
+# Project report
+
+## Project description
 
 ### Project's reporter: Uladzislau Krejzo
 
 ### Group number: md-sa2-25-23
 
-## Description of application for deployment:
+### Pipeline. High Level Design
 
-- Application: WordPress 6.2/2
+![project_draw](project_image.png)
 
-- Programming language: PHP
+### Description of application for deployment:
+
+- Application: Jellyfin Media Server
+
+- Programming language: C#
 
 - DB: MySQL 
 
-- Link on git repository: https://github.com/jankalep/it-academy-project.git
-
 ## Pipeline
 
-## Technologies which were used in project:
+### Technologies which were used in project:
 
 - Orchestration: 
 Kubernetes
@@ -28,22 +32,23 @@ GitHub's action, Argo CD
 GitHub
 
 - Notification:
-Slack
+Slack + email
 
 - Other tools:
- Docker, Helm
+Helm
 
-## CI/CD description:
-After pushing to the master branch, Git Action builds and pushes the image to GitHub container Registry, creates a HELM diagram package. Argo CD deploys application in k8s cluster.
+### CI/CD description:
+After pushing to the master branch, Git Action builds and pushes the image to GitHub container Registry, creates a HELM diagram package. Argo CD deploys application in k8s Cluster.
 
-## Rollback flow description and implementation:
+### Rollback flow description and implementation:
 
 Version selection in Argo CD
+Release strategy: RollingUpdate
 
-
-## Links:
+### Links:
 
 Project repository: https://github.com/jankalep/it-academy-project.git
 
+Application site: https://jellyfin.org/
 
-![project_draw](project_image.png)
+Example helm repo: https://github.com/brianmcarey/jellyfin-helm.git 
