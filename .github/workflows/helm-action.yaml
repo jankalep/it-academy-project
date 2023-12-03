@@ -35,7 +35,7 @@ jobs:
 
       - name: Publish Helm charts
         run: |
-          cd ../../helm-source
+          cd ./helm-source
           helm package jellyfin 
           mv jellyfin-* ../helm-release
           cd ../../
