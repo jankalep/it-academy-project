@@ -23,7 +23,7 @@ enableDLNA: false
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 8096
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
@@ -71,6 +71,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
+    subPath: config
     accessMode: ReadWriteOnce
     size: 1Gi
   media:
@@ -88,6 +89,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
+    subPath: media
     accessMode: ReadWriteOnce
     size: 10Gi
   extraExistingClaimMounts: []
