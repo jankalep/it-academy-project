@@ -35,6 +35,7 @@ jobs:
 
       - name: Publish Helm charts
         run: |
+          mkdir ./helm-release || test -d ./helm-release
           cd ./helm-source
           helm package jellyfin 
           mv jellyfin-* ../helm-release
