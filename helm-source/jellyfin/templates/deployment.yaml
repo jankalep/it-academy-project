@@ -1,102 +1,96 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "jellyfin.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "jellyfin.name" . }}
-    helm.sh/chart: {{ include "jellyfin.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: jellyfin
+  name: jellyfin
+  namespace: jellyfin
 spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
   strategy:
-    type: Recreate
-  replicas: {{ .Values.replicaCount }}
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "jellyfin.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app: jellyfin
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "jellyfin.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app: jellyfin
     spec:
-    {{- if .Values.enableDLNA }}
-      hostNetwork: true
-    {{- end }}
-      containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 8096
-              protocol: TCP
-          {{ if .Values.enableDLNA }}
-            - name: dlna
-              containerPort: 1900
-              hostPort: 1900
-              protocol: UDP
-          {{- end }}
-          livenessProbe:
-            tcpSocket:
-              port: http
-          readinessProbe:
-            tcpSocket:
-              port: http
-          volumeMounts:
-            - mountPath: /config
-              name: config
-            {{- if .Values.persistence.config.subPath }}
-              subPath: {{ .Values.persistence.config.subPath }}
-            {{- end }}
-            - mountPath: /media
-              name: media
-            {{- if .Values.persistence.media.subPath }}
-              subPath: {{ .Values.persistence.media.subPath }}
-            {{- end }}
-            {{- range .Values.persistence.extraExistingClaimMounts }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}
-              readOnly: {{ .readOnly }}
-            {{- end }}
-            {{- if .Values.extraVolumeMounts }}
-            {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
-            {{- end }}
-          resources:
-{{ toYaml .Values.resources | indent 12 }}
       volumes:
-      - name: config
-      {{- if .Values.persistence.config.enabled }}
+      - name: nfs-jellyfin-config
         persistentVolumeClaim:
-          claimName: {{ if .Values.persistence.config.existingClaim }}{{ .Values.persistence.config.existingClaim }}{{- else }}{{ template "jellyfin.fullname" . }}-config{{- end }}
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
-      - name: media
-      {{- if .Values.persistence.media.enabled }}
+          claimName: jellyfin-pvc-config
+      - name: nfs-jellyfin-data
         persistentVolumeClaim:
-          claimName: {{ if .Values.persistence.media.existingClaim }}{{ .Values.persistence.media.existingClaim }}{{- else }}{{ template "jellyfin.fullname" . }}-media{{- end }}
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
-      {{- range .Values.persistence.extraExistingClaimMounts }}
-      - name: {{ .name }}
-        persistentVolumeClaim:
-          claimName: {{ .existingClaim }}
-      {{- end }}
-      {{- if .Values.extraVolumes }}
-      {{- toYaml .Values.extraVolumes | nindent 6 }}
-      {{- end }}
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+          claimName: jellyfin-pvc-data
+      # The settings below have been marked out and can be used when removing the "#"
+      # - name: device-vcsm # Only needed if you want to use your Raspberry Pi MMAL video decoding (Enabled as OpenMax H264 decode in gui settings).
+      #   hostPath:
+      #     path: /dev/vcsm 
+      # - name: device-vchiq  #Only needed if you want to use your Raspberry Pi OpenMax video encoding.
+      #   hostPath:
+      #    path: /dev/vchiq
+      # - name: device-video10  #Only needed if you want to use your Raspberry Pi V4L2 video encoding.
+      #   hostPath:
+      #     path: /dev/video10 
+      # - name: device-video11  #Only needed if you want to use your Raspberry Pi V4L2 video encoding.
+      #   hostPath:
+      #     path: /dev/video11 
+      # - name: device-video12  #Only needed if you want to use your Raspberry Pi V4L2 video encoding.
+      #   hostPath:
+      #      path: /dev/video12 
+      containers:
+      - env:
+        - name: JELLYFIN_PublishedServerUrl 
+          value: xxx.xxx.xxx.xxx # The IP number for your jellyfin server (see service config)
+        - name: PGID
+          value: "\x36\x35\x35\x34\x31" # < ASCII code for '65541'
+        - name: PUID
+          value: "\x31\x30\x34\x34" #< ACII code for '1044'
+        - name: TZ
+          value: Europe/Minsk
+        securityContext:
+          privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
+        image: ghcr.io/linuxserver/jellyfin
+        imagePullPolicy: Always
+        name: jellyfin
+        ports:
+        - containerPort: 8096
+          name: http-tcp
+          protocol: TCP
+        - containerPort: 8920
+          name: https-tcp
+          protocol: TCP
+        - containerPort: 1900
+          name: dlna-udp
+          protocol: UDP
+        - containerPort: 7359
+          name: discovery-udp
+          protocol: UDP      
+        resources: {}
+        stdin: true
+        tty: true
+        volumeMounts:
+        - mountPath: /config
+          name: nfs-jellyfin-config
+        - mountPath: /data
+          name: nfs-jellyfin-data
+        # Below are the path to mount devices for hardware acceleration
+        # The settings below have been marked out and can be used when removing the "#"
+        # - mountPath: /dev/vcsm
+        #   name: device-vcsm
+        # - mountPath: /dev/vchiq
+        #   name: device-vchiq
+        # - mountPath: /dev/video10
+        #   name: device-video10
+        # - mountPath: /dev/video11
+        #   name: device-video11
+        # - mountPath: /dev/video12
+        #   name: device-video12
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
