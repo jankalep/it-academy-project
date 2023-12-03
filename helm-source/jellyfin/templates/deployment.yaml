@@ -87,3 +87,5 @@ spec:
         #   name: device-video12
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+
+      # For update
