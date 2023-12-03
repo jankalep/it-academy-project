@@ -38,7 +38,7 @@ jobs:
           cd ./helm-source
           helm package jellyfin 
           mv jellyfin-* ../helm-release
-          cd ../../
+          cd ../
           helm repo index --url https://github.com/jankalep/it-academy-project/ --merge index.yaml .
       
       - name: Commit and push changes
