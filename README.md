@@ -43,7 +43,7 @@ After pushing to the master branch, Git Action builds and pushes the image to Gi
 ### Rollback flow description and implementation:
 
 Version selection in Argo CD
-Release strategy: RollingUpdate
+Release strategy: Recreate
 
 ### Links:
 
