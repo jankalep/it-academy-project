@@ -18,7 +18,7 @@ jobs:
       - name: Login to the Container registry
         uses: docker/login-action@v1
         with:
-          registry: jfrog.it-academy.by/public/jellyfin:uldz
+          registry: jfrog.it-academy.by/public
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: uldz/jellyfin:${{ steps.tag_version.outputs.new_tag }}
+          tags: jellyfin:${{ steps.tag_version.outputs.new_tag }}
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
