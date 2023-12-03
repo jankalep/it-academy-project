@@ -18,6 +18,8 @@ spec:
     name: discovery-udp
     protocol: UDP
   type: LoadBalancer
+  loadBalancerIP: 127.0.0.1 # < IP to access your jellyfinserver. Should be one from the MetalLB range and the same as the UDP yaml
+  sessionAffinity: ClientIP # This is necessary for multi-replica deployments
 
 ---
 kind: Service
@@ -38,4 +40,6 @@ spec:
   - port: 8920
     targetPort: 8920
     name: https-tcp
+    loadBalancerIP: 127.0.0.1 # < IP to access your jellyfinserver. Should be one from the MetalLB range and the same as the UDP yaml
+    sessionAffinity: ClientIP # This is necessary for multi-replica deployments
   # This is necessary for multi-replica deployments
