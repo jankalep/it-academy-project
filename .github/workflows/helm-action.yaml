@@ -16,19 +16,19 @@ jobs:
       - name: Checks-out the repository
         uses: actions/checkout@v3
 
-      - name: Login to the Container registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.CR_TOKEN }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./helm-source/jellyfin
-          push: true
-          tags: ghcr.io/jankalep/jellyfin:latest
+     # - name: Login to the Container registry
+     #   uses: docker/login-action@v1
+     #   with:
+     #     registry: ghcr.io
+     #     username: ${{ github.actor }}
+     #     password: ${{ secrets.CR_TOKEN }}
+     #
+     # - name: Build and push
+     #   uses: docker/build-push-action@v2
+     #   with:
+     #     context: ./helm-source/jellyfin
+     #     push: true
+     #     tags: ghcr.io/jankalep/jellyfin:latest
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
@@ -36,7 +36,7 @@ jobs:
       - name: Publish Helm charts
         run: |
           cd ../../helm-source
-          helm package jellyfin --version=${{ steps.tag_version.outputs.new_tag }} --app-version=${{ steps.tag_version.outputs.new_tag }}
+          helm package jellyfin 
           mv jellyfin-* ../helm-release
           cd ../../
           helm repo index --url https://github.com/jankalep/it-academy-project/ --merge index.yaml .
