@@ -1,4 +1,5 @@
 # Helm package GitHub Action
+# version 0.1.2 GHAct with working Helm and git changes
 
 name: helm-action
 
@@ -23,12 +24,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.CR_TOKEN }}
      
-     # - name: Build and push
-     #   uses: docker/build-push-action@v2
-     #   with:
-     #     context: ./helm-source/jellyfin
-     #     push: true
-     #     tags: ghcr.io/jankalep/jellyfin:latest
+      - name: Build and push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./helm-source/jellyfin
+          push: true
+          tags: ghcr.io/jankalep/jellyfin:uldz
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
@@ -53,7 +54,6 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: project-jellyfin
           SLACK_COLOR: ${{ job.status }} 
           SLACK_MESSAGE: 'A new image ${{ github.repository }}:${{ github.ref_name }} has been released'
           SLACK_TITLE: Status
