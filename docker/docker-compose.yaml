@@ -10,7 +10,6 @@ services:
       - /path/to/config:/config
       - /path/to/cache:/cache
       - /path/to/media:/media
-      - /path/to/media2:/media2:ro
     restart: 'unless-stopped'
     # Optional - alternative address used for autodiscovery
     environment:

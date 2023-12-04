@@ -28,6 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker
+          file: docker-compose.yaml
           push: true
           tags: ghcr.io/jankalep/jellyfin:latest
           
