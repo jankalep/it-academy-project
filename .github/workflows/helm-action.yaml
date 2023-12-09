@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.CR_TOKEN }}
      
       - name: publish
-        uses: pennsignals/publish_docker-compose@v0.1.1
+        uses: jankalep/it-academy-project/.github/workflows/docker-compose-push.yml@master
         with:
           version: 'v0.1'
           docker_compose: './docker/docker-compose.yaml' 
