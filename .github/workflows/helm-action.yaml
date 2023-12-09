@@ -25,11 +25,9 @@ jobs:
           password: ${{ secrets.CR_TOKEN }}
      
       - name: Build and push docker image
-        uses: sudo-bot/action-docker-compose@latest # Используем action для docker-compose
+        uses: sudo-bot/action-docker-compose@latest
         with:
-          cli-args: "build && push" # Собираем и публикуем наш стек
-          file: docker/docker-compose.yaml
-          tags: ghcr.io/jankalep/jellyfin:latest
+          cli-args: "-f docker/docker-compose.yaml build && -f docker/docker-compose.yaml push"
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
