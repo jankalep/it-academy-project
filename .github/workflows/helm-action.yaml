@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.CR_TOKEN }}
      
       - name: publish
-        uses: jankalep/publish_docker-compose/action.yml@master
+        uses: https://github.com/jankalep/publish_docker-compose/action.yml@master
         with:
           version: 'v0.1'
           docker_compose: './docker/docker-compose.yaml' 
