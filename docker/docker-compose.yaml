@@ -1,4 +1,3 @@
-# I couldn't to solve ports across 8096
 version: "3.8"
 services:
   jellyfin:
@@ -6,11 +5,10 @@ services:
     container_name: jellyfin
     user: 1001:1001
     network_mode: "host"
+    ports:
+      - "8096:8096"
     volumes:
-      #- ./config:/config
-      -:/config
-      #- ./cache:/cache
-      -:/cache
-      #- /media:/media:ro
-      :/media:ro
+      - ./config:/config
+      - ./cache:/cache
+      - /media:/media:ro
     restart: "unless-stopped"
