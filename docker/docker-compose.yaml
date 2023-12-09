@@ -1,8 +1,6 @@
 # I couldn't to solve ports across 8096
-version: "3.5"
-
+version: "3.8"
 services:
-
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
@@ -10,9 +8,9 @@ services:
     network_mode: "host"
     volumes:
       #- ./config:/config
-      -:/config
+      - /config:/config
       #- ./cache:/cache
-      -:/cache
+      - /cache:/cache
       #- /media:/media:ro
-      :/media:ro
+      - /media:/media:ro
     restart: "unless-stopped"
