@@ -27,8 +27,8 @@ jobs:
       - name: publish
         uses: pennsignals/publish_docker-compose@v0.1.1
         with:
-          version: 
-          docker_compose: './docker/docker-compose.yaml' # required
+          version: 'v0.1'
+          docker_compose: './docker/docker-compose.yaml' 
           repo_token: "${{ secrets.CR_TOKEN }}"
           
       - name: Helm tool installer
