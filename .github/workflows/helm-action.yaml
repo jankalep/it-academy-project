@@ -24,13 +24,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.CR_TOKEN }}
      
-      - name: Build and push docker image
-        uses: docker/build-push-action@v2
+      - name: publish
+        uses: pennsignals/publish_docker-compose@v0.1.0
         with:
-          context: .
-          file: docker/dockerfile
-          push: true
-          tags: ghcr.io/jankalep/jellyfin:latest
+          version: 'latest'
+          docker_compose: './docker/docker-compose.yaml' # required
+          repo_token: "${{ secrets.CR_TOKEN }}"
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
