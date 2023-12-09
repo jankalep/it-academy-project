@@ -14,9 +14,9 @@
 
 - Application: Jellyfin Media Server
 
-- Programming language: C#
+- Programming language: C#, .NET, python
 
-- DB: MySQL 
+- DB: sqlite3 
 
 ## Pipeline
 
@@ -35,15 +35,15 @@ GitHub
 Slack + email
 
 - Other tools:
-Helm
+Helm, Docker-compose
 
 ### CI/CD description:
-After pushing to the master branch, Git Action builds and pushes the image to GitHub container Registry, creates a HELM diagram package. Argo CD deploys application in k8s Cluster.
+Developer pushing commits to the master branch with changes of app. Git Action builds docker-compose.yaml to docker image and push it to GitHub container Registry. After that Action creates a HELM diagram package and commit them to repository. Argo CD deploys application in k8s Cluster.
 
 ### Rollback flow description and implementation:
 
 Version selection in Argo CD
-Release strategy: Recreate
+Release strategy: RollingUpdate
 
 ### Links:
 
@@ -51,4 +51,8 @@ Project repository: https://github.com/jankalep/it-academy-project.git
 
 Application site: https://jellyfin.org/
 
-Example helm repo: https://github.com/brianmcarey/jellyfin-helm.git 
+Original dockerimage: https://hub.docker.com/r/jellyfin/jellyfin 
+
+Original jellyfin docker-compose file: https://jellyfin.org/docs/general/installation/container/
+
+Helm repo used like example: https://github.com/brianmcarey/jellyfin-helm.git 
