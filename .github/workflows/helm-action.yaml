@@ -24,13 +24,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.CR_TOKEN }}
      
-      - name: publish
-        uses: jankalep/publish_docker-compose/action.yml@master
-        with:
-          version: 'v0.1'
-          docker_compose: './docker/docker-compose.yaml' 
-          repo_token: "${{ secrets.CR_TOKEN }}"
+      - name: tag
+        run: |
+          # if VERSION is not set, get it from git repo
+          VERSION="latest"
+          if [ -z "$VERSION" ]; then
+              VERSION=$(${{ github.action_path }}/src/version.sh)
+          fi
+          echo "VERSION: $VERSION"
+          echo "::set-output name=semver::$(echo $VERSION)"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
           
+      - name: publish
+        run: |
+          ${{ github.action_path }}/src/publish.sh $VERSION ./docker/docker-compose.yaml ${{ secrets.CR_TOKEN }}
+
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
 
