@@ -1,13 +1,14 @@
+# Think about it! Maybe it should to comment
 kind: Service
 apiVersion: v1
 metadata:
   name: jellyfin-udp       # < name of the service
-  namespace: jellyfin      # < namespace where to place service
+  namespace: {{ .Values.namespace}}      # < namespace where to place service
   annotations:
     metallb.universe.tf/allow-shared-ip: jellyfin # # < annotation name to combine the Service IP, make sure it's same name as in the service UDP yaml
 spec:
   selector:
-    app: jellyfin          # < reference to the deployment (connects the service with the deployment)
+    app: {{ .Values.name}}          # < reference to the deployment (connects the service with the deployment)
   ports:
   - port: 1900             # < port to open on the outside on the server
     targetPort: 1900       # < targetport. port on the pod to passthrough
@@ -26,20 +27,20 @@ kind: Service
 apiVersion: v1
 metadata:
   name: jellyfin-tcp       # < name of the service
-  namespace: jellyfin      # < namespace where to place service
+  namespace: {{ .Values.namespace}}      # < namespace where to place service
   annotations:
     metallb.universe.tf/allow-shared-ip: jellyfin # < annotation name to combine the Service IP, make sure it's same name as in the service UDP yaml
 spec:
   selector:
-    app: jellyfin          # < reference to the deployment (connects the service with the deployment)
+    app: {{ .Values.name}}          # < reference to the deployment (connects the service with the deployment)
   ports:
-  - port: 8080             # < port to open on the outside on the server
-    targetPort: 8096       # < targetport. port on the pod to passthrough
+  - port: {{.Values.service.webui.port}}             # < port to open on the outside on the server
+    targetPort: {{ .Values.service.webui.targetport}}       # < targetport. port on the pod to passthrough
     name: http-tcp         # < reference name for the port in the deployment yaml
     protocol: TCP
-  - port: 8920
-    targetPort: 8920
-    name: https-tcp
-    loadBalancerIP: 127.0.0.1 # < IP to access your jellyfinserver. Should be one from the MetalLB range and the same as the UDP yaml
-    sessionAffinity: ClientIP # This is necessary for multi-replica deployments
+  #- port: 8920
+  #  targetPort: 8920
+  #  name: https-tcp
+    # loadBalancerIP: 127.0.0.1 # < IP to access your jellyfinserver. Should be one from the MetalLB range and the same as the UDP yaml
+    # sessionAffinity: ClientIP # This is necessary for multi-replica deployments
   # This is necessary for multi-replica deployments

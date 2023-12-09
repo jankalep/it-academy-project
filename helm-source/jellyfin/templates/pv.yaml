@@ -24,7 +24,7 @@ metadata:
 spec:
   storageClassName: ""
   capacity:
-    storage: 1Ti                   # < max. size we reserve for the pv. A bigger value than the configdata
+    storage: 5Gi                   # < max. size we reserve for the pv. A bigger value than the configdata
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
