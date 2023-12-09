@@ -27,7 +27,7 @@ jobs:
       - name: Build and push docker image
         uses: sudo-bot/action-docker-compose@latest
         with:
-          cli-args: "-f docker/docker-compose.yaml build && -f docker/docker-compose.yaml push"
+          cli-args: " docker/docker-compose.yaml build && docker/docker-compose.yaml push"
           
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
