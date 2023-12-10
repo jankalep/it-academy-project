@@ -46,10 +46,11 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
+    # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - 192.168.203.6
+    - jellyfin.k8s-6.sa
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
