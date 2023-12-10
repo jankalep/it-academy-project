@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/jankalep/jellyfin
+  repository: ghcr.io/jankalep/it-academy-project/jellyfin
   tag: latest
   pullPolicy: IfNotPresent
 
