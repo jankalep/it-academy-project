@@ -88,8 +88,11 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10Gi
+  config:
+    enabled: true
+
   extraExistingClaimMounts: []
     # - name: external-mount
     #   mountPath: /srv/external-mount
