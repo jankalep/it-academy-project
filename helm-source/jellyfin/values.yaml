@@ -43,7 +43,7 @@ service:
   # externalTrafficPolicy: Cluster
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
@@ -57,7 +57,7 @@ ingress:
 
 persistence:
   config:
-    enabled: false
+    enabled: true
     ## jellyfin configuration data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -74,7 +74,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
   media:
-    enabled: false
+    enabled: true
     ## Directory where media is persisted
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning

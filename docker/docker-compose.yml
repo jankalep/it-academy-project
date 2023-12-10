@@ -13,4 +13,6 @@ services:
       - /cache:/cache
       #- /media:/media:ro
       - /media:/media:ro
+    ports:
+      - 8096 
     restart: "unless-stopped"
