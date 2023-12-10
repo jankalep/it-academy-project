@@ -62,3 +62,4 @@ Original jellyfin docker-compose file: https://jellyfin.org/docs/general/install
 
 Helm repo used like example: https://github.com/brianmcarey/jellyfin-helm.git 
 
+[![ Project GitHub action](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml/badge.svg)](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml)
