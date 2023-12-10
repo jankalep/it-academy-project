@@ -8,5 +8,5 @@ services:
     volumes:
       - /config
       - /cache
-      - /media:ro
+      - /media
     restart: "unless-stopped"
