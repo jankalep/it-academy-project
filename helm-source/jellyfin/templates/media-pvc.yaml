@@ -10,11 +10,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  nfs:
-      path: /mnt/test/jellyfin/media #/mnt/test/sa2-25-23/Uladzislau_Krejzo/jellyfin/media
-      server: 192.168.37.105
-      readOnly: false
-      vers: 3
+  volumeName: jellyfin-pv-nfs-media
   accessModes:
     - {{ .Values.persistence.media.accessMode | quote }}
   persistentVolumeReclaimPolicy: Retain
@@ -29,4 +25,20 @@ spec:
 {{- end }}
 {{- end }}
 {{- end -}}
-
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-pv-nfs-media
+  namespace: jellyfin
+spec:
+  storageClassName: ""
+  capacity:
+    storage: {{ .Values.persistence.media.size | quote }}  # < max. size we reserve for the pv. A bigger value than the configdata
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /mnt/test/jellyfin/media
+    server: 192.168.203.15
+    readOnly: false
