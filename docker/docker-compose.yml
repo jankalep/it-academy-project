@@ -5,10 +5,10 @@ services:
     container_name: jellyfin
     restart: unless-stopped
     volumes:
-      - config:/config
-      - cache:/cache
-      - media:/media
+      - jellyfin-config:/config
+      - jellyfincache:/cache
+      - jellyfin-media:/media
 volumes:
-  config:
-  cache:
-  media:
+  jellyfin-config:
+  jellyfin-cache:
+  jellyfin-media:
