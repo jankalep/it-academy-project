@@ -37,7 +37,7 @@ service:
   ## Use loadBalancerIP to request a specific static IP,
   ## otherwise leave blank
   ##
-  loadBalancerIP:
+  loadBalancerIP: 192.168.203.6
   # loadBalancerSourceRanges: []
   ## Set the externalTrafficPolicy in the Service to either Cluster or Local
   # externalTrafficPolicy: Cluster
