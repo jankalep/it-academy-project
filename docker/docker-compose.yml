@@ -9,8 +9,7 @@ services:
     volumes:
       - jellyfin-config:/config
       - jellyfin-cache:/cache
-      - jellyfin-media:/media
+      - /data:/media:ro
 volumes:
   jellyfin-config:
   jellyfin-cache:
-  jellyfin-media:
