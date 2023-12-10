@@ -38,7 +38,7 @@ jobs:
       - name: publish
         run: |
           chmod u+x src/publish.sh
-          src/publish.sh $VERSION  "./docker/docker-compose.yaml" ${{ secrets.CR_TOKEN }}
+          src/publish.sh $VERSION  "/docker/docker-compose.yaml" ${{ secrets.CR_TOKEN }}
 
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
