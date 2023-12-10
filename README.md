@@ -54,8 +54,8 @@ Release strategy: RollingUpdate
 | GitHub Action | build docker image from docker-compose.yaml and push them to GitHub container registry | ~20s     |
 | GitHub Action | build and index helm package                                                           | ~15s     |
 | GitHub Action | make commit by github action and push to repo                                          | ~5s      |
-| DevOps        | watch that were changed repo and appeared new helm-package release                     |          |
-| DevOps        | try to change/start version of application in helm package (Jellyfin)                  |          |
+| DevOps        | watch that were changed repo and appeared new helm-package release                     | ~        |
+| DevOps        | try to change/start version of application in helm package (Jellyfin)                  | ~        |
 | ArgoCD        | deployment of helm package to Kubernetes cluster                                       | ~1.5 min |
 
 ### Links:
@@ -70,4 +70,4 @@ Original jellyfin docker-compose file: https://jellyfin.org/docs/general/install
 
 Helm repo used like example: https://github.com/brianmcarey/jellyfin-helm.git 
 
-[![ Project GitHub action](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml/badge.svg)](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml)
+My GitHub Action: [![ Project GitHub action](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml/badge.svg)](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml)
