@@ -8,9 +8,9 @@ services:
     network_mode: "host"
     volumes:
       #- ./config:/config
-      - /config:/config
+      - /config
       #- ./cache:/cache
-      - /cache:/cache
+      - /cache
       #- /media:/media:ro
-      - /media:/media:ro
+      - /media:ro
     restart: "unless-stopped"
