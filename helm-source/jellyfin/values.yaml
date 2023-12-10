@@ -29,7 +29,6 @@ service:
   ## set the LoadBalancer service type to internal only.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
   ##
-  type: NodePort
   nodePort: 8096
 
   annotations: {}
