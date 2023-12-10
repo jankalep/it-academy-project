@@ -58,9 +58,8 @@ ingress:
 persistence:
   cache:
     enabled: true
-    hostPath: /jellyfin/cache
-    mountPath: /cache
-
+    accessMode: ReadWriteMany
+    size: 1Gi
   config:
     enabled: true
     ## jellyfin configuration data Persistent Volume Storage Class
@@ -76,15 +75,12 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    hostPath: /jellyfin/config
-    mountPath: /media
     accessMode: ReadWriteOnce
     size: 1Gi
   media:
     enabled: true
     #hostPath: /jellyfin/media
     #mountPath: /media
-    existingClaim: jellyfin-pv-nfs-data
     ## Directory where media is persisted
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -129,12 +125,22 @@ tolerations: []
 
 affinity: {}
 
-extraVolumes: []
+extraVolumes:
+  - name: jellyfin-pv-nfs-data
+    hostPath: 
+      path: /jellyfin/media
+  - name: jellyfin-pv-nfs-config
+    hostPath: 
+      path: /jellyfin/config
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
 
-extraVolumeMounts: []
+extraVolumeMounts:
+  - mouthPath: /media
+    name: jellyfin-pv-nfs-data
+  - mouthPath: /config
+    name: nfs-jellyfin-config
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129
 
