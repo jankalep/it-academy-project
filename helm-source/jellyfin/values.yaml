@@ -137,9 +137,9 @@ extraVolumes:
   #    path: /dev/dri/renderD129
 
 extraVolumeMounts:
-  - mouthPath: /media
+  - mouthPath: /jellyfin-media
     name: jellyfin-pv-nfs-data
-  - mouthPath: /config
+  - mouthPath: /jellyfin-config
     name: nfs-jellyfin-config
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129
