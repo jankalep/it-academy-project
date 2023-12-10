@@ -30,7 +30,6 @@ service:
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
   ##
   nodePort: 8096
-
   annotations: {}
   labels: {}
   ## Use loadBalancerIP to request a specific static IP,
@@ -129,7 +128,7 @@ extraVolumes:
   - name: jellyfin-pv-nfs-data
     hostPath: 
       path: /jellyfin/media
-  - name: jellyfin-pv-nfs-config
+  - name: nfs-jellyfin-config
     hostPath: 
       path: /jellyfin/config
   #- name: renderD129
