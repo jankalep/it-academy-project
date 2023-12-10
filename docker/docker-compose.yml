@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - jellyfin-config:/config
-      - jellyfincache:/cache
+      - jellyfin-cache:/cache
       - jellyfin-media:/media
 volumes:
   jellyfin-config:
