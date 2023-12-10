@@ -52,7 +52,7 @@ Release strategy: RollingUpdate
 | Developer     | make changes to project like docker-compose.yml and Helm deployment files              | ~        |
 | Developer     | make commit and push changes to repo                                                   | ~        |
 | GitHub Action | build docker image from docker-compose.yaml and push them to GitHub container registry | ~20s     |
-| GitHub Action | build and index helm package                                                           | ~15s     |
+| GitHub Action | build and index helm package                                                           | ~40s     |
 | GitHub Action | make commit by github action and push to repo                                          | ~5s      |
 | DevOps        | watch that were changed repo and appeared new helm-package release                     | ~        |
 | DevOps        | try to change/start version of application in helm package (Jellyfin)                  | ~        |

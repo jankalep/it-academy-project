@@ -10,14 +10,14 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
+  nfs:
+      path: /mnt/test/jellyfin/media #/mnt/test/sa2-25-23/Uladzislau_Krejzo/jellyfin/media
+      server: 192.168.37.105
+      readOnly: false
+      vers: 3
   accessModes:
     - {{ .Values.persistence.media.accessMode | quote }}
   persistentVolumeReclaimPolicy: Retain
-  nfs:
-    path: /mnt/test/jellyfin/media #/mnt/test/sa2-25-23/Uladzislau_Krejzo/jellyfin/media
-    server: 192.168.37.105
-    readOnly: false
-    vers: 3
   resources:
     requests:
       storage: {{ .Values.persistence.media.size | quote }}
@@ -29,3 +29,4 @@ spec:
 {{- end }}
 {{- end }}
 {{- end -}}
+

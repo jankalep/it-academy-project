@@ -12,5 +12,5 @@ services:
       #- ./cache:/cache
       - cache:/cache
       #- /media:/media:ro
-      - media:/media:ro
+      - /media:ro
     restart: "unless-stopped"
