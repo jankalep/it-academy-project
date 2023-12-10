@@ -4,8 +4,8 @@ services:
     image: jellyfin/jellyfin
     container_name: jellyfin
     restart: unless-stopped
-    ports:
-      - 8096
+#    ports:
+#      - 8096
     volumes:
       - jellyfin-config:/config
       - jellyfin-cache:/cache
