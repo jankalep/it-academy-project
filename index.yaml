@@ -3,9 +3,9 @@ entries:
   jellyfin:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-10T23:18:04.336508731Z"
+    created: "2023-12-10T23:24:41.818184039Z"
     description: Jellyfin Media Server
-    digest: 19cd3fc16556f7cda19ef1a03afc8ee796ceb458ac5860f4c2cb20e1eb133fb1
+    digest: da24d0a8d39398fdc89ef7bb5726e2604a2381fd59b95d4e881c739c7e31474f
     name: jellyfin
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-10T23:18:04.336114459Z"
+    created: "2023-12-10T23:24:41.817729011Z"
     description: Jellyfin Media Server
     digest: f66d8125863172a4454aafc3760c1154da56de011c48bad8c62eabd7bc954d8a
     name: jellyfin
@@ -23,7 +23,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-10T23:18:04.335745874Z"
+    created: "2023-12-10T23:24:41.817339536Z"
     description: Jellyfin Media Server
     digest: 383957be1b56194d32b46adaa59c6bd448ecc14a058652ab93f6e0828d0e8ceb
     name: jellyfin
@@ -33,7 +33,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-10T23:18:04.335304585Z"
+    created: "2023-12-10T23:24:41.816944089Z"
     description: Jellyfin Media Server
     digest: 3b49e3a72bf33c27e7096dc2ef83d8095d8b70f29f2bb13e3115869a0c6494da
     name: jellyfin
@@ -43,7 +43,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-10T23:18:04.334911484Z"
+    created: "2023-12-10T23:24:41.816542201Z"
     description: Jellyfin Media Server
     digest: 9fee7617153a058c5ca69c5ab79fa7ca9b3c1fbcaa197ea3923aa16cccf33d85
     name: jellyfin
@@ -51,4 +51,4 @@ entries:
     urls:
     - helm-release/jellyfin-0.0.9.tgz
     version: 0.0.9
-generated: "2023-12-10T23:18:04.334379736Z"
+generated: "2023-12-10T23:24:41.816001754Z"
