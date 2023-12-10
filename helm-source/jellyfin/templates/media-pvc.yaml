@@ -42,3 +42,18 @@ spec:
     path: /mnt/test/jellyfin/media
     server: 192.168.203.15
     readOnly: false
+--- 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-pvc-data
+  namespace: jellyfin
+spec:
+  storageClassName: ""
+  volumeName: jellyfin-pv-nfs-data
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 10Gi

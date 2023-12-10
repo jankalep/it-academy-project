@@ -56,6 +56,11 @@ ingress:
   #      - chart-example.local
 
 persistence:
+  cache:
+    enabled: true
+    hostPath: /jellyfin/cache
+    mountPath: /cache
+
   config:
     enabled: true
     ## jellyfin configuration data Persistent Volume Storage Class
@@ -71,10 +76,15 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
+    hostPath: /jellyfin/config
+    mountPath: /media
     accessMode: ReadWriteOnce
     size: 1Gi
   media:
     enabled: true
+    #hostPath: /jellyfin/media
+    #mountPath: /media
+    existingClaim: jellyfin-pv-nfs-data
     ## Directory where media is persisted
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
