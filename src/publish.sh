@@ -16,7 +16,7 @@ for IMAGE in $IMAGES; do
     echo "IMAGE: $IMAGE"
 
     NAME="jellyfin"
-    TAG="ghcr.io/${GITHUB_REPOSITORY}/$NAME:$VERSION"
+    TAG="ghcr.io/${GITHUB_ACTOR}/$NAME:$VERSION"
 
     docker tag "$IMAGE" "$TAG"
     docker push "$TAG"
