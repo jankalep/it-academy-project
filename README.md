@@ -45,6 +45,11 @@ Developer pushing commits to the master branch with changes of app. Git Action b
 Version selection in Argo CD
 Release strategy: RollingUpdate
 
+### Perfomance of steps
+
+
+
+
 ### Links:
 
 Project repository: https://github.com/jankalep/it-academy-project.git
@@ -56,3 +61,4 @@ Original dockerimage: https://hub.docker.com/r/jellyfin/jellyfin
 Original jellyfin docker-compose file: https://jellyfin.org/docs/general/installation/container/
 
 Helm repo used like example: https://github.com/brianmcarey/jellyfin-helm.git 
+
