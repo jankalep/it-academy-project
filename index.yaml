@@ -3,16 +3,6 @@ entries:
   jellyfin:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-12-11T16:28:06.829318556Z"
-    description: Jellyfin Media Server
-    digest: 36d194bde09f84488fa11f438d11bca9ba676f49d069a0cc22cd8887efe1c881
-    name: jellyfin
-    type: application
-    urls:
-    - helm-release/jellyfin-0.1.9.tgz
-    version: 0.1.9
-  - apiVersion: v2
-    appVersion: "1.0"
     created: "2023-12-11T16:28:06.828881219Z"
     description: Jellyfin Media Server
     digest: 99933f459f81e76c0dcc1f46e0f96840e9c0f918bfb9f4001b6cfc69e0f42585
