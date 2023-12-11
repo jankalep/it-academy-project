@@ -127,10 +127,10 @@ tolerations: []
 affinity: {}
 
 extraVolumes:
-  - name: jellyfin-pv-nfs-data
+  - name: jellyfin-media
     hostPath: 
       path: /jellyfin/media
-  - name: nfs-jellyfin-config
+  - name: jellyfin-config
     hostPath: 
       path: /jellyfin/config
   #- name: renderD129
@@ -139,9 +139,9 @@ extraVolumes:
 
 extraVolumeMounts:
   - mountPath: /jellyfin-media
-    name: jellyfin-pv-nfs-data
+    name: jellyfin-media
   - mountPath: /jellyfin-config
-    name: nfs-jellyfin-config
+    name: jellyfin-config
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129
 
