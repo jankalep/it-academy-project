@@ -1,4 +1,4 @@
-# 0.1.8
+# 0.1.9
 # Default values for jellyfin.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -126,21 +126,26 @@ tolerations: []
 affinity: {}
 
 extraVolumes:
-  - name: jellyfin-media
+  - name: jellyfin-media-storage
     hostPath: 
       path: /jellyfin/media
-  - name: jellyfin-config
+  - name: jellyfin-config-storage
     hostPath: 
       path: /jellyfin/config
+  - name: jellyfin-cache-storage
+    hostPath: 
+      path: /jellyfin/cache
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
 
 extraVolumeMounts:
   - mountPath: /jellyfin-media
-    name: jellyfin-media
+    name: jellyfin-media-storage
   - mountPath: /jellyfin-config
-    name: jellyfin-config
+    name: jellyfin-config-storage
+  - mountPath: /jellyfin-cache
+    name: jellyfin-cache-storage
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129
 
