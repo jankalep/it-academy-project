@@ -2,7 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+releaseStrategy: RollingUpdate
+replicaCount: 2
 
 image:
   repository: ghcr.io/jankalep/it-academy-project/jellyfin

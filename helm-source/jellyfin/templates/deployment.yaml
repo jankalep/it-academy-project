@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: Recreate
+    type: {{ .Values.releaseStrategy}}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
