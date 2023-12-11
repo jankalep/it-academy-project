@@ -1,4 +1,4 @@
-# 0.1.7
+# 0.1.8
 # Default values for jellyfin.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -96,7 +96,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadOnly
+    accessMode: ReadOnlyMany
     size: 10Gi
 
   extraExistingClaimMounts: []
