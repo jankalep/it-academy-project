@@ -23,6 +23,7 @@ service:
   type: ClusterIP
   port: 8080
   nodePort: 30000
+
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
@@ -31,7 +32,6 @@ service:
   ## set the LoadBalancer service type to internal only.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
   ##
-  
   annotations: {}
   labels: {}
   ## Use loadBalancerIP to request a specific static IP,
