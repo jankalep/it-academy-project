@@ -19,6 +19,7 @@ fullnameOverride: ""
 enableDLNA: false
 
 service:
+  service:
   type: ClusterIP
   port: 8080
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
