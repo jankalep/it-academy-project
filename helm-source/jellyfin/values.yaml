@@ -95,7 +95,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadwriteOnce
+    accessMode: ReadWriteOnce
     size: 10Gi
 
   extraExistingClaimMounts: []
