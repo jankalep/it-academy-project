@@ -1,15 +1,15 @@
-apiVersion: apps/v1
+apiVersion: apps/v3
 kind: Deployment
 metadata:
   name: {{ include "jellyfin.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "jellyfin.name" . }}
+    app.kubernetes.io/name: {{ include "jellyfin.name" . }} 
     helm.sh/chart: {{ include "jellyfin.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: Recreate
+    type: {{ .Values.releaseStrategy}} ## added releaseStrategy from value.yaml
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
