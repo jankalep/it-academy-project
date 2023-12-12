@@ -41,7 +41,11 @@ jobs:
           src/publish.sh $VERSION docker/docker-compose.yml ${{ secrets.CR_TOKEN }}
 
       - name: Helm tool installer
-        uses: Azure/setup-helm@v2
+        uses: azure/setup-helm@v2
+        with:
+          version: 'latest'
+          token: ${{secrets.CR_TOKEN}}
+        id: install
 
       - name: Publish Helm charts
         run: |
