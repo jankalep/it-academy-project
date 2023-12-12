@@ -127,13 +127,13 @@ affinity: {}
 extraVolumes:
   - name: jellyfin-media-st
     hostPath: 
-      path: /jellyfin/media
-  - name: jellyfin-config-st
+      path: /home/jellyfin/media
+  - name: /home/jellyfin-config-st
     hostPath: 
-      path: /jellyfin/config
+      path: /home/jellyfin/config
   - name: jellyfin-cache-st
     hostPath: 
-      path: /jellyfin/cache
+      path: /home/jellyfin/cache
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
