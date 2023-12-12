@@ -2,8 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-releaseStrategy: Recreate
-replicaCount: 1
+releaseStrategy: RollingUodate
+replicaCount: 2
 
 image:
   repository: ghcr.io/jankalep/it-academy-project/jellyfin
