@@ -57,7 +57,7 @@ ingress:
 
 persistence:
   cache:
-    enabled:true
+    enabled: true
     accessMode: ReadWriteMany
     size: 1Gi
   config:
