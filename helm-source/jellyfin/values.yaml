@@ -2,8 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-releaseStrategy: Recreate
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: ghcr.io/jankalep/it-academy-project/jellyfin
@@ -13,19 +12,16 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
-# Setting this to true enables DLNA which requires the pod to be attached to the  
+# Setting this to true enables DLNA which requires the pod to be attached to the
 # host network in order to be useful - this can break things like ingress to the service
 # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#hosts-namespaces
 # https://jellyfin.org/docs/general/networking/dlna.html
 enableDLNA: false
 
 service:
-  service:
   type: ClusterIP
   port: 8080
-  nodePort: 30000
-
-  ## Specify the nodePort value for the LoadBalancer and NodePort service types .
+  ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
   # nodePort:
@@ -33,6 +29,8 @@ service:
   ## set the LoadBalancer service type to internal only.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
   ##
+  nodePort: 8096
+
   annotations: {}
   labels: {}
   ## Use loadBalancerIP to request a specific static IP,
@@ -59,7 +57,7 @@ ingress:
 
 persistence:
   cache:
-    enabled: true
+    enabled:true
     accessMode: ReadWriteMany
     size: 1Gi
   config:
@@ -81,8 +79,6 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    #hostPath: /jellyfin/media
-    #mountPath: /media
     ## Directory where media is persisted
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -98,7 +94,6 @@ persistence:
     # subPath: some-subpath
     accessMode: ReadWriteMany
     size: 10Gi
-
   extraExistingClaimMounts: []
     # - name: external-mount
     #   mountPath: /srv/external-mount
@@ -125,27 +120,12 @@ tolerations: []
 
 affinity: {}
 
-extraVolumes:
-  - name: jellyfin-media-storage
-    hostPath: 
-      path: /jellyfin/media
-  - name: jellyfin-config-storage
-    hostPath: 
-      path: /jellyfin/config
-  - name: jellyfin-cache-storage
-    hostPath: 
-      path: /jellyfin/cache
+extraVolumes: []
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
 
-extraVolumeMounts:
-  - mountPath: /jellyfin-media
-    name: jellyfin-media-storage
-  - mountPath: /jellyfin-config
-    name: jellyfin-config-storage
-  - mountPath: /jellyfin-cache
-    name: jellyfin-cache-storage
+extraVolumeMounts: []
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129
 
