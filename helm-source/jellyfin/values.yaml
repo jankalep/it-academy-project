@@ -128,7 +128,7 @@ extraVolumes:
   - name: jellyfin-media-st
     hostPath: 
       path: /home/jellyfin/media
-  - name: /home/jellyfin-config-st
+  - name: jellyfin-config-st
     hostPath: 
       path: /home/jellyfin/config
   - name: jellyfin-cache-st
