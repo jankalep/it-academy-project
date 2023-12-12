@@ -59,7 +59,7 @@ ingress:
 persistence:
   cache:
     enabled: true
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 1Gi
   config:
     enabled: true
@@ -76,7 +76,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 1Gi
   media:
     enabled: true
@@ -95,7 +95,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 10Gi
 
   extraExistingClaimMounts: []
