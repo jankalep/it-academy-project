@@ -25,7 +25,7 @@ service:
   port: 8080
   nodePort: 30000
 
-  ## Specify the nodePort value for the LoadBalancer and NodePort service types.
+  ## Specify the nodePort value for the LoadBalancer and NodePort service types .
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
   # nodePort:
@@ -60,7 +60,7 @@ ingress:
 persistence:
   cache:
     enabled: true
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 1Gi
   config:
     enabled: true
@@ -77,7 +77,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 1Gi
   media:
     enabled: true
@@ -96,7 +96,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10Gi
 
   extraExistingClaimMounts: []
