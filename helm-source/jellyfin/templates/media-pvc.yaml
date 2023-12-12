@@ -1,4 +1,3 @@
-
 {{- if and .Values.persistence.media.enabled (not .Values.persistence.media.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
