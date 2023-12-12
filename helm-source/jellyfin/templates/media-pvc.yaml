@@ -1,6 +1,6 @@
 {{- if and .Values.persistence.media.enabled (not .Values.persistence.media.existingClaim) }} #if we have existing pvc it's not starting
 kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: v2
 metadata:
   name: {{ template "jellyfin.fullname" . }}-media
   labels:

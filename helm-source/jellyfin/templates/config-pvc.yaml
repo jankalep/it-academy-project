@@ -1,6 +1,6 @@
 {{- if and .Values.persistence.config.enabled (not .Values.persistence.config.existingClaim) }} # if we have existing it's not starting
 kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: v2
 metadata:
   name: {{ template "jellyfin.fullname" . }}-config
   labels:
