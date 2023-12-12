@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -10,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: RollingUpdate
+    type: RollingUpdate # исправлено здесь
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0 
