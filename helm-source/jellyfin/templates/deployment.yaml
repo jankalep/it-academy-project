@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: {{ .Values.releaseStrategy}} # added releaseStrategy from value.yaml
+    type: {{ .Values.releaseStrategy}} 
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:

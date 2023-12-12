@@ -1,4 +1,5 @@
-{{- if and .Values.persistence.media.enabled (not .Values.persistence.media.existingClaim) }} #if we have  existing pvc it's not starting. 
+
+{{- if and .Values.persistence.media.enabled (not .Values.persistence.media.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -11,7 +12,6 @@ metadata:
 spec:
   accessModes:
     - {{ .Values.persistence.media.accessMode | quote }}
-  persistentVolumeReclaimPolicy: Retain
   resources:
     requests:
       storage: {{ .Values.persistence.media.size | quote }}
