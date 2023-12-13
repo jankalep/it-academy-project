@@ -80,9 +80,8 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    - name: jellyfin-media-st
-      hostPath: 
-        path: /home/jellyfin/media
+      - existingClaim: jellyfin-media-st
+      
     #hostPath: /jellyfin/media
     #mountPath: /media
     ## Directory where media is persisted
