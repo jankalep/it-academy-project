@@ -81,8 +81,8 @@ persistence:
   media:
     enabled: true
     - name: jellyfin-media-st
-      #hostPath: 
-      #  path: /home/jellyfin/media
+      hostPath: 
+        path: /home/jellyfin/media
     #hostPath: /jellyfin/media
     #mountPath: /media
     ## Directory where media is persisted
@@ -142,10 +142,13 @@ extraVolumes:
   - name: jellyfin-cache-st
     hostPath: 
       path: /home/jellyfin/cache
+   
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
 
 extraVolumeMounts:
- 
-
+  - mountPath: jellyfin-nfs-media
+    name: jellyfin-nfs-media
+#- mountPath: /dev/dri/renderD129
+  #  name: renderD129 -
