@@ -101,12 +101,12 @@ persistence:
     size: 10Gi
 
   extraExistingClaimMounts: 
-     - mountPath: /jellyfin-media
-       name: jellyfin-media-st
-     - mountPath: /jellyfin-config
-       name: jellyfin-config-st
-     - mountPath: /jellyfin-cache
-       name: jellyfin-cache-st
+    - name: jellyfin-media-st
+      mountPath: /jellyfin-media
+    - name: jellyfin-config-st
+      mountPath: /jellyfin-config
+    - name: jellyfin-cache-st
+      mountPath: /jellyfin-cachess
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129 -
     # - name: external-mount
@@ -120,7 +120,7 @@ resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'
   limits:
     cpu: 2
     memory: 3Gi
