@@ -10,7 +10,9 @@ services:
       - jellyfin-config:/config
       - jellyfin-cache:/cache
       - jellyfin-media:/media
+      - jellyfin-nfs-media:/media
 volumes:
   jellyfin-config:
   jellyfin-cache:
   jellyfin-media:
+  jellyfin-nfs-media:
