@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ template "jellyfin.fullname" . }}-media
+  labels:
+    type: nfs
+    name: jellyfin-nfs-vol
+    {{- include "wordpress.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.persistence.media.size }}
+  accessModes:
+    - {{ .Values.media.accessMode | quote}}
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /mnt/test/jellyfin/media
+    server: 192.168.37.105
