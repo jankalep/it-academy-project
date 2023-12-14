@@ -80,8 +80,8 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    existingClaim: jellyfin-media
-      
+    existingClaim: {{ template "jellyfin.fullname" . }}-media
+    #storageClass: nfs-jellyfin{{ .Chart.AppVersion }}
     #hostPath: /jellyfin/media
     #mountPath: /media
     ## Directory where media is persisted
@@ -97,22 +97,14 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10Gi
 
-  extraExistingClaimMounts: 
-    - name: jellyfin-media-st
-      mountPath: /jellyfin-media
-    - name: jellyfin-config-st
-      mountPath: /jellyfin-config
-    - name: jellyfin-cache-st
-      mountPath: /jellyfin-cachess
-  #- mountPath: /dev/dri/renderD129
-  #  name: renderD129 -
+  extraExistingClaimMounts: []
     # - name: external-mount
     #   mountPath: /srv/external-mount
     ## A manually managed Persistent Volume and Claim
-    ## If defined, PVC must be created manually before volume will be bound.
+    ## If defined, PVC must be created manually before volume will be bound
     #   existingClaim:
     #   readOnly: true
 
@@ -120,13 +112,13 @@ resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 2
-    memory: 3Gi
+    memory: 2Gi
    requests:
     cpu: 2
-    memory: 2Gi
+    memory: 3Gi
 
 nodeSelector: {}
 
@@ -135,19 +127,28 @@ tolerations: []
 affinity: {}
 
 extraVolumes:
+ # - name: jellyfin-media-st
+  #  hostPath: 
+  #    path: /home/jellyfin/media
   - name: jellyfin-config-st
     hostPath: 
       path: /home/jellyfin/config
   - name: jellyfin-cache-st
     hostPath: 
       path: /home/jellyfin/cache
-   
   #- name: renderD129
   #  hostPath:
   #    path: /dev/dri/renderD129
 
 extraVolumeMounts:
- # - mountPath: jellyfin-nfs-media
- #   name: jellyfin-nfs-media
-#- mountPath: /dev/dri/renderD129
+  - mountPath: /jellyfin-media
+    name: jellyfin-media-st
+  - mountPath: /jellyfin-config
+    name: jellyfin-config-st
+  - mountPath: /jellyfin-cache
+    name: jellyfin-cache-st
+  #- mountPath: /dev/dri/renderD129
   #  name: renderD129 -
+
+storageClass: {}
+  ##
