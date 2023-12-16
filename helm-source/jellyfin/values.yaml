@@ -80,7 +80,8 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    #existingClaim: {{ template "jellyfin.fullname" . }}-media
+    existingClaim: jellyfin-media-claim
+        #existingClaim: {{ template "jellyfin.fullname" . }}-media
     #storageClass: nfs-jellyfin{{ .Chart.AppVersion }}
     #hostPath: /jellyfin/media
     #mountPath: /media
@@ -152,3 +153,10 @@ extraVolumeMounts:
 
 storageClass: {}
   #
+
+
+#nfs:
+#  enabled: true
+#  path: /mnt/test/jellyfin/media
+#  server: 192.168.37.105
+      
