@@ -143,7 +143,7 @@ extraVolumes:
 
 extraVolumeMounts:
   - mountPath: /jellyfin-media
-    name: jellyfin-media-nfs
+    name: jellyfin-media
   - mountPath: /jellyfin-config
     name: jellyfin-config-st
   - mountPath: /jellyfin-cache
