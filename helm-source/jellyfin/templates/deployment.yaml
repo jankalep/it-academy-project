@@ -81,6 +81,7 @@ spec:
       {{- if .Values.persistence.media.enabled }}
         persistentVolumeClaim:
           claimName: jellyfin-media-claim
+      {{- end }}    
       {{- range .Values.persistence.extraExistingClaimMounts }}
       - name: {{ .name }}
         persistentVolumeClaim:
@@ -101,4 +102,3 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-
