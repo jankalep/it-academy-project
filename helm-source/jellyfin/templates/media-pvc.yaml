@@ -25,7 +25,6 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  storageClassName: ""
   volumeName: jellyfin-media-vol  
   accessModes:
     - {{ .Values.persistence.media.accessMode | quote }}
