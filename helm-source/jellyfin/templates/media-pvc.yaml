@@ -1,7 +1,24 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-media
+  labels:
+    type: nfs
+    name: jellyfin-nfs-vol
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - {{ .Values.persistence.media.accessMode | quote }}
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /mnt/test/jellyfin/media
+    server: 192.168.37.105
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ template "jellyfin.fullname" . }}-media
+  name: jellyfin-media
   labels:
     app.kubernetes.io/name: {{ include "jellyfin.name" . }}
     helm.sh/chart: {{ include "jellyfin.chart" . }}
@@ -15,6 +32,5 @@ spec:
       storage: {{ .Values.persistence.media.size | quote }}
   selector:
     matchLabels:
-      name: jellyfin-nfs-vol
       type: nfs
----
+      name: jellyfin-nfs-vol
