@@ -55,7 +55,7 @@ spec:
               subPath: {{ .Values.persistence.config.subPath }}
             {{- end }}
             - mountPath: /media
-              name: jelyfin-media
+              name: jellyfin-media
             {{- if .Values.persistence.media.subPath }}
               subPath: {{ .Values.persistence.media.subPath }}
             {{- end }}
