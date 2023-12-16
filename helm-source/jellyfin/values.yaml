@@ -115,10 +115,10 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 2
-    memory: 2Gi
+    memory: 3Gi
   requests:
     cpu: 2
-    memory: 3Gi
+    memory: 2Gi
 
 nodeSelector: {}
 
@@ -142,7 +142,7 @@ extraVolumes:
 
 extraVolumeMounts:
   - mountPath: /jellyfin-media
-    name: jellyfin-media-st
+    name: jellyfin-media-nfs
   - mountPath: /jellyfin-config
     name: jellyfin-config-st
   - mountPath: /jellyfin-cache
@@ -151,4 +151,4 @@ extraVolumeMounts:
   #  name: renderD129 -
 
 storageClass: {}
-  ##
+  #
