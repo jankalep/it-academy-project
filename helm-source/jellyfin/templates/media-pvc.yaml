@@ -13,9 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   nfs:
     path: /mnt/test/jellyfin/media 
-    # {{ .Values.persistence.nfs.path }} before working version
     server: 192.168.37.105
-    # {{ .Values.persistence.nfs.server }} before working version
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
