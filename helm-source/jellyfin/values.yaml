@@ -25,7 +25,7 @@ service:
   nodePort: 30000
   ## Specify the nodePort value for the LoadBalancer and NodePort service types .
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-  #
+  ##
   # nodePort:
   ## Provide any additional annotations which may be required. This can be used to
   ## set the LoadBalancer service type to internal only.
@@ -80,9 +80,6 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    # existingClaim: jellyfin-media-claim
-        #existingClaim: {{ template "jellyfin.fullname" . }}-media
-    #storageClass: nfs-jellyfin{{ .Chart.AppVersion }}
     #hostPath: /jellyfin/media
     #mountPath: /media
     ## Directory where media is persisted
@@ -92,13 +89,13 @@ persistence:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    ## storageClass: "-"
+    # storageClass: "-"
     ##
     ## If you want to reuse an existing claim, you can pass the name of the PVC using
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 10Gi
 
   extraExistingClaimMounts: []
@@ -109,17 +106,17 @@ persistence:
     #   existingClaim:
     #   readOnly: true
 
-resources:
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 2
-    memory: 3Gi
-  requests:
-    cpu: 2
-    memory: 2Gi
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
 
 nodeSelector: {}
 
@@ -128,9 +125,9 @@ tolerations: []
 affinity: {}
 
 extraVolumes:
- # - name: jellyfin-media-st
-  #  hostPath: 
-  #    path: /home/jellyfin/media
+  - name: jellyfin-media-st
+    hostPath: 
+      path: /home/jellyfin/media
   - name: jellyfin-config-st
     hostPath: 
       path: /home/jellyfin/config
@@ -143,7 +140,7 @@ extraVolumes:
 
 extraVolumeMounts:
   - mountPath: /jellyfin-media
-    name: jellyfin-media
+    name: jellyfin-media-st
   - mountPath: /jellyfin-config
     name: jellyfin-config-st
   - mountPath: /jellyfin-cache
@@ -151,12 +148,3 @@ extraVolumeMounts:
   #- mountPath: /dev/dri/renderD129
   #  name: renderD129 -
 
-storageClass: {}
-  #
-
-
-#nfs:
-#  enabled: true
-#  path: /mnt/test/jellyfin/media
-#  server: 192.168.37.105
-      

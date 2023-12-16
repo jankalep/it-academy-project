@@ -9,11 +9,10 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: RollingUpdate
+    type: RollingUpdate 
     rollingUpdate:
       maxUnavailable: 0 
   replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "jellyfin.name" . }}
@@ -54,7 +53,7 @@ spec:
               subPath: {{ .Values.persistence.config.subPath }}
             {{- end }}
             - mountPath: /media
-              name: jellyfin-media
+              name: media
             {{- if .Values.persistence.media.subPath }}
               subPath: {{ .Values.persistence.media.subPath }}
             {{- end }}
@@ -76,11 +75,13 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: jellyfin-media
+      - name: media
       {{- if .Values.persistence.media.enabled }}
         persistentVolumeClaim:
-          claimName: jellyfin-media-claim
-      {{- end }}    
+          claimName: {{ if .Values.persistence.media.existingClaim }}{{ .Values.persistence.media.existingClaim }}{{- else }}{{ template "jellyfin.fullname" . }}-media{{- end }}
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
       {{- range .Values.persistence.extraExistingClaimMounts }}
       - name: {{ .name }}
         persistentVolumeClaim:
@@ -101,4 +102,3 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
----
