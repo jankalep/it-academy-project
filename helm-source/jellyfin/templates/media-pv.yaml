@@ -15,3 +15,4 @@ spec:
   nfs:
     path: /mnt/test/jellyfin/media
     server: 192.168.37.105
+    ---
