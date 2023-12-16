@@ -55,7 +55,7 @@ spec:
               subPath: {{ .Values.persistence.config.subPath }}
             {{- end }}
             - mountPath: /jellyfin-media
-              name: jellyfin-media-nfs
+              name: jellyfin-media
             {{- if .Values.persistence.media.subPath }}
               subPath: {{ .Values.persistence.media.subPath }}
             {{- end }}
@@ -77,7 +77,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: jellyfin-media-nfs
+      - name: jellyfin-media
       {{- if .Values.persistence.media.enabled }}
         persistentVolumeClaim:
           claimName: {{ if .Values.persistence.media.existingClaim }}
