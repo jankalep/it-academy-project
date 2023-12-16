@@ -40,13 +40,6 @@ Helm, Docker-compose
 ### CI/CD description:
 Developer pushing commits to the master branch with changes of app. Git Action builds docker-compose.yaml to docker image and push it to GitHub container Registry. After that Action creates a HELM diagram package and commit them to repository. Argo CD deploys application in k8s Cluster.
 
-### Rollback flow description and implementation:
-
-Version selection in Argo CD
-Release strategy: Recreate
-
-### Perfomance of steps table
-
 | Process owner |                                   Step of deployment                                   | Time     |
 |---------------|:--------------------------------------------------------------------------------------:|----------|
 | Developer     | make changes to project like docker-compose.yml and Helm deployment files              | ~        |
@@ -56,7 +49,12 @@ Release strategy: Recreate
 | GitHub Action | make commit by github action and push to repo                                          | ~5s      |
 | DevOps        | watch that were changed repo and appeared new helm-package release                     | ~        |
 | DevOps        | try to change/start version of application in helm package (Jellyfin)                  | ~        |
-| ArgoCD        | deployment of helm package to Kubernetes cluster                                       | ~1.5 min |
+| ArgoCD        | deployment of helm package to Kubernetes cluster                                       | ~30 s    |
+
+### Rollback flow description and implementation:
+
+Version selection in Argo CD
+Release strategy: Recreate
 
 ### Links:
 
