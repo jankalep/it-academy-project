@@ -32,3 +32,4 @@ spec:
     requests:
       storage: {{ .Values.persistence.media.size | quote }}
  
+---
