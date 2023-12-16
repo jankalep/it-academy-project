@@ -5,7 +5,7 @@ metadata:
   labels:
     type: nfs
     name: jellyfin-nfs-vol
-    {{- include "wordpress.labels" . | nindent 4 }}
+    {{- include "jellyfin.name" . | nindent 4 }}
 spec:
   capacity:
     storage: {{ .Values.persistence.media.size }}
