@@ -80,7 +80,7 @@ persistence:
     size: 1Gi
   media:
     enabled: true
-    existingClaim: {{ template "jellyfin.fullname" . }}-media
+    #existingClaim: {{ template "jellyfin.fullname" . }}-media
     #storageClass: nfs-jellyfin{{ .Chart.AppVersion }}
     #hostPath: /jellyfin/media
     #mountPath: /media
