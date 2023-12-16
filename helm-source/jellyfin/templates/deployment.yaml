@@ -11,7 +11,6 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 2
       maxUnavailable: 0 
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 2
