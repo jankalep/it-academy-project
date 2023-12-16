@@ -17,4 +17,3 @@ spec:
     matchLabels:
       name: jellyfin-nfs-vol
       type: nfs
----
