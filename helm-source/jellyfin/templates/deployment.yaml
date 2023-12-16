@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   strategy:
-    type: RollingUpdate 
+    type: Recreate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0 
