@@ -10,7 +10,7 @@ spec:
     storage: {{ .Values.persistence.media.size | quote }}
   accessModes:
     - {{ .Values.persistence.media.accessMode | quote }}
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: { .Values.persistence.media.policy }
   nfs:
     path: {{ .Values.nfs.path }}
     server: {{ .Values.nfs.server }}
