@@ -13,8 +13,8 @@ spec:
     - {{ .Values.persistence.media.accessMode | quote }}
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    path: /mnt/IT-Academy/nfs-data/sa2-25-23/Uladzislau_Krejzo/jellyfin/media 
-    server: 192.168.37.105
+    path: {{ .Values.nfs.path }}
+    server: {{ .Values.nfs.server }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
