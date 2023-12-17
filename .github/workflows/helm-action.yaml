@@ -40,6 +40,15 @@ jobs:
           chmod u+x src/publish.sh
           src/publish.sh $VERSION docker/docker-compose.yml ${{ secrets.CR_TOKEN }}
 
+      - name: Slack Notification of new Dockerimage
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: ${{ job.status }} 
+          SLACK_MESSAGE: 'A new version of Dockerimage in ${{ github.repository }}:${{ github.ref_name }} has been released'
+          SLACK_TITLE: Status
+          SLACK_USERNAME: ${{ github.repository }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
+
       - name: Helm tool installer
         uses: azure/setup-helm@v3
         with:
@@ -64,11 +73,11 @@ jobs:
           git commit -m "Publish jellyfin ${{ steps.tag_version.outputs.new_tag }}"
           git push origin master
 
-      - name: Slack Notification
+      - name: Slack Notification of New Release
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: ${{ job.status }} 
-          SLACK_MESSAGE: 'A new version of ${{ github.repository }}:${{ github.ref_name }} has been released'
+          SLACK_MESSAGE: 'A new version of app in ${{ github.repository }}:${{ github.ref_name }} has been released'
           SLACK_TITLE: Status
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
