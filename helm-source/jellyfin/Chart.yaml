@@ -3,4 +3,4 @@ appVersion: "1.0"
 description: Jellyfin 0.1.9 Rolling Update media in host. 
 name: jellyfin
 type: application
-version: 0.1.9
+version: 0.1.91
