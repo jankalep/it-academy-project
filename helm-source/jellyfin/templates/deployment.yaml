@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,8 +11,8 @@ spec:
   strategy:
     type: RollingUpdate 
     rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1 
+      maxSurge: 1
+      maxUnavailable: 1 
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -55,7 +54,7 @@ spec:
               subPath: {{ .Values.persistence.config.subPath }}
             {{- end }}
             - mountPath: /media
-              name: media
+              name: jellyfin-media
             {{- if .Values.persistence.media.subPath }}
               subPath: {{ .Values.persistence.media.subPath }}
             {{- end }}
@@ -77,13 +76,11 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: media
+      - name: jellyfin-media
       {{- if .Values.persistence.media.enabled }}
         persistentVolumeClaim:
-          claimName: {{ if .Values.persistence.media.existingClaim }}{{ .Values.persistence.media.existingClaim }}{{- else }}{{ template "jellyfin.fullname" . }}-media{{- end }}
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
+          claimName: jellyfin-media-claim
+      {{- end }}    
       {{- range .Values.persistence.extraExistingClaimMounts }}
       - name: {{ .name }}
         persistentVolumeClaim:
