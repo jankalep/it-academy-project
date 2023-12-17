@@ -154,9 +154,7 @@ extraVolumeMounts:
 storageClass: {}
   #
 
-
-#nfs:
-#  enabled: true
-#  path: /mnt/test/jellyfin/media
-#  server: 192.168.37.105
+nfs:
+  path: /mnt/IT-Academy/nfs-data/sa2-25-23/Uladzislau_Krejzo/jellyfin/media
+  server: 192.168.37.105
       
