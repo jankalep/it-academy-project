@@ -3,7 +3,7 @@ entries:
   jellyfin:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.847758524Z"
+    created: "2023-12-17T11:28:49.299085755Z"
     description: Jellyfin 0.2.5 RecreateUpdate with try nfs.
     digest: f20636ff9c3fac0e55412f2e5cbdbd4d0a3d8cbb6bcef3c28bd9a4ec90759bd8
     name: jellyfin
@@ -13,7 +13,7 @@ entries:
     version: 0.2.582
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.846991996Z"
+    created: "2023-12-17T11:28:49.298657264Z"
     description: Jellyfin 0.2.5 RecreateUpdate with try nfs.
     digest: 7a3001e1351eda4364b8663c81f40b616b49e6dfc800201587621d22b79ff4b7
     name: jellyfin
@@ -23,7 +23,7 @@ entries:
     version: 0.2.581
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.8461936Z"
+    created: "2023-12-17T11:28:49.298188817Z"
     description: Jellyfin 0.2.5 RecreateUpdate with try nfs.
     digest: 5862e5b1d6d51acb5e9255a935e55c41e7eb49122ff1b84f78e844a9fb5d62b9
     name: jellyfin
@@ -33,7 +33,7 @@ entries:
     version: 0.2.58
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.845776278Z"
+    created: "2023-12-17T11:28:49.297759694Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 5b00d380942c88ba081c29f575f64f7fb63c2be0e955d58c0e7491e1c67e1f9b
     name: jellyfin
@@ -43,7 +43,7 @@ entries:
     version: 0.2.57
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.845345661Z"
+    created: "2023-12-17T11:28:49.29729238Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: aff45ca5a245a1f39ef82dbee4a4ffbbdac2f40a5696e4fcfeb4bdd426d7cbcd
     name: jellyfin
@@ -53,7 +53,7 @@ entries:
     version: 0.2.56
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.844924282Z"
+    created: "2023-12-17T11:28:49.296172573Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 125799703870daf6d2a7b97b252757e15fc939b18ce6252e7c20310577b7e70c
     name: jellyfin
@@ -63,7 +63,7 @@ entries:
     version: 0.2.55
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.844467676Z"
+    created: "2023-12-17T11:28:49.295742708Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 4ad3a333277953c353395c1533ee1cdd3f0f0561d9d1f8262663369242345f20
     name: jellyfin
@@ -73,7 +73,7 @@ entries:
     version: 0.2.54
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.844049302Z"
+    created: "2023-12-17T11:28:49.295289961Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 53d3570a51d9abd4716cdce987e7e85daf65c737bb1c70d461a1b3012d5842f3
     name: jellyfin
@@ -83,7 +83,7 @@ entries:
     version: 0.2.53
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.843613626Z"
+    created: "2023-12-17T11:28:49.294863503Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 330a043293bf0130a29e25165dc94c9d6fb111c1c964b1041317913e028000db
     name: jellyfin
@@ -93,7 +93,7 @@ entries:
     version: 0.2.52
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.843169574Z"
+    created: "2023-12-17T11:28:49.294428961Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 6283b1878ab3aee4e63871372501a291ab457889ee1f54726f461d590d707186
     name: jellyfin
@@ -103,7 +103,7 @@ entries:
     version: 0.2.51
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.842733637Z"
+    created: "2023-12-17T11:28:49.293979129Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: b014f3e22c0861e4748df50c0d8d3e3eeb372e44b21b375baff8468090efc4fd
     name: jellyfin
@@ -113,7 +113,7 @@ entries:
     version: 0.2.5
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.842255912Z"
+    created: "2023-12-17T11:28:49.293541029Z"
     description: Jellyfin 0.2.5 RollingUpdate with try nfs.
     digest: 4b2013f0405cdb55ddd7186877d95c168f03860e0df3531fa85c243410d485d6
     name: jellyfin
@@ -123,7 +123,17 @@ entries:
     version: 0.2.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.841820997Z"
+    created: "2023-12-17T11:28:49.293094143Z"
+    description: Jellyfin 0.1.9 Rolling Update media in host.
+    digest: e6a298644efb5ac94e0f34a7cc853183fc85b2494195ae70c422464d5ece5521
+    name: jellyfin
+    type: application
+    urls:
+    - helm-release/jellyfin-0.1.93.tgz
+    version: 0.1.93
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2023-12-17T11:28:49.292629774Z"
     description: Jellyfin 0.1.9 Rolling Update media in host.
     digest: c1002575f274d1363110a85fb1027058cddf887e5b0e217fb7557f8c39c2c826
     name: jellyfin
@@ -133,7 +143,7 @@ entries:
     version: 0.1.92
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.84139019Z"
+    created: "2023-12-17T11:28:49.292133746Z"
     description: Jellyfin 0.1.9 Rolling Update media in host.
     digest: 2aac34f8a4bb59c8c430ac6b48d5b05761787f6918b318e90ee68512f9d1a077
     name: jellyfin
@@ -143,7 +153,7 @@ entries:
     version: 0.1.9
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.840946559Z"
+    created: "2023-12-17T11:28:49.291677974Z"
     description: Jellyfin Media Server 0.1.8 RollingUpdate
     digest: 51721fd470e1960e6aadf4b5030569013cd0a2dbbc175c131ba8a18079ce0d48
     name: jellyfin
@@ -153,7 +163,7 @@ entries:
     version: 0.1.8
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2023-12-17T10:50:02.840479824Z"
+    created: "2023-12-17T11:28:49.291193067Z"
     description: Jellyfin Media Server 0.1.8 RollingUpdate
     digest: b361e9de1db64637ec12572d6cdc20f0a6e24d4deccc72d10a6d123fd69400b1
     name: jellyfin
@@ -161,4 +171,4 @@ entries:
     urls:
     - helm-release/jellyfin-0.1.7.tgz
     version: 0.1.7
-generated: "2023-12-17T10:50:02.839882305Z"
+generated: "2023-12-17T11:28:49.290590379Z"
