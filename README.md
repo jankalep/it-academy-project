@@ -68,4 +68,6 @@ Original jellyfin docker-compose file: https://jellyfin.org/docs/general/install
 
 Helm repo used like example: https://github.com/brianmcarey/jellyfin-helm.git 
 
+Example to make pvc in remote nfs: https://www.debontonline.com/2021/11/kubernetes-part-16-deploy-jellyfin.html
+
 My GitHub Action: [![ Project GitHub action](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml/badge.svg)](https://github.com/jankalep/it-academy-project/actions/workflows/helm-action.yaml)
